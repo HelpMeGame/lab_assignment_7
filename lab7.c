@@ -80,22 +80,22 @@ int* selectionSort(Node *arr, int n)
         
         // loop through and find lower value
         for (int j = i + 1; j < n; j++)
-        {
-            if (arr[j].data < arr[minIndex].data)
-            {
+        if (arr[j].data < arr[minIndex].data)
                 minIndex = j;
-            }
+
+
+        if (minIndex != i)
+        {
+            // swap nodes
+            k = arr[i];
+            arr[i] = arr[minIndex];
+            arr[minIndex] = k;
+
+            // increment swap counters
+            arr[i].swapCount++;
+            arr[minIndex].swapCount++;
+            totalSwaps++;
         }
-
-        // swap nodes
-        k = arr[i];
-        arr[i] = arr[minIndex];
-        arr[minIndex] = k;
-
-        // increment swap counters
-        arr[i].swapCount++;
-        arr[minIndex].swapCount++;
-        totalSwaps++;
     }
 
     // print out values
